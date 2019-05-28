@@ -27,7 +27,7 @@ namespace ConvolutionWpf.Commands
             image.CopyPixels(pixels, image.BackBufferStride, 0);
 
             var imageRes = new WriteableBitmap(2 * image.PixelWidth, image.PixelHeight, image.DpiX, image.DpiY, image.Format, image.Palette);
-            var resultPixels = new byte[2*imageRes.PixelHeight * imageRes.BackBufferStride];
+            var resultPixels = new byte[imageRes.PixelHeight * imageRes.BackBufferStride];
 
             //todo
 

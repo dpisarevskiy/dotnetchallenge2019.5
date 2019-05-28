@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows;
 using System.Windows.Media.Imaging;
 using Catel.Data;
 using Catel.MVVM;
