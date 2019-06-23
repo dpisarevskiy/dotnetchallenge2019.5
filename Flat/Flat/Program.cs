@@ -16,8 +16,22 @@ namespace Flat
             Flat flat = new Flat();
 
             //todo
-            //flat.Room1 = ...
-            
+            IRoomFactory factory = CreateFactory(flatStyle);
+
+            flat.Room1 = factory.CreateRoom();
+            flat.Room2 = factory.CreateRoom();
+            flat.Balcony = factory.CreateBalcony();
+
+        }
+
+        private static IRoomFactory CreateFactory(string flatStyle)
+        {
+            if (string.Equals(flatStyle, "light", StringComparison.OrdinalIgnoreCase))
+                return new LightRoomFactory();
+            else if (string.Equals(flatStyle, "dark", StringComparison.OrdinalIgnoreCase))
+                return new DarkRoomFactory();
+
+            return null;
         }
     }
 }

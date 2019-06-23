@@ -43,10 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Balcony.cs" />
     <Compile Include="Chandelier.cs" />
+    <Compile Include="DarkRoomFactory.cs" />
     <Compile Include="Dark\DarkWallpaper.cs" />
     <Compile Include="Dark\DarkChandelier.cs" />
     <Compile Include="Flat.cs" />
+    <Compile Include="IRoomFactory.cs" />
+    <Compile Include="LightRoomFactory.cs" />
     <Compile Include="Light\LightChandelier.cs" />
     <Compile Include="Light\LightWallpaper.cs" />
     <Compile Include="Program.cs" />
