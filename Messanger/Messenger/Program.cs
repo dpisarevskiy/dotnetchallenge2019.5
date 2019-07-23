@@ -15,6 +15,7 @@ namespace Messenger
             TelecomStation.Connect(vova, dima);
 
             vova.Send("Димон чемпион!");
+            vova.Send("basters!");
 
             Console.ReadKey();
         }
