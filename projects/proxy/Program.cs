@@ -32,10 +32,10 @@ namespace proxy
         }
     }
 
-public class Log{
+public class Proxy: Loggers{
     private List<Loggers> loggers;
     private string configFile;
-    public void LogInfo(string msg){
+    public void LoggersInit(){
         //Lazy init
         if(loggers == null) {
             loggers = new List<Loggers>();
@@ -58,13 +58,17 @@ public class Log{
                 }
             }
         }
-
-        foreach(Loggers l in loggers){
-            l.Write(msg);
-        }
     }
-    public Log(string configFilePath){
+    public Proxy(string configFilePath){
         configFile = configFilePath;//Combine(CurrentDirectory, configFileName);
+    }
+
+    public override void Write(string str){
+        LoggersInit();
+        //Console.WriteLine($"{DateTime.Now} Console Logger write: {str}");
+        foreach(Loggers l in loggers){
+            l.Write(str);
+        }
     }
 }
 
@@ -86,9 +90,9 @@ public class Log{
                 sw.WriteLine("File");
             }
 
-            Log logger = new Log(configFilePath);
-            logger.LogInfo("test1");
-            logger.LogInfo("test2");
+            Loggers logger = new Proxy(configFilePath);
+            logger.Write("test1");
+            logger.Write("test2");
         }
     }
 }

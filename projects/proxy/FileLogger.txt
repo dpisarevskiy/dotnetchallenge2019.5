@@ -9,3 +9,5 @@ test1
 test2
 7/23/2019 4:48:40 PM FileLogger write: test1
 7/23/2019 4:48:40 PM FileLogger write: test2
+7/23/2019 9:33:37 PM FileLogger write: test1
+7/23/2019 9:33:37 PM FileLogger write: test2
