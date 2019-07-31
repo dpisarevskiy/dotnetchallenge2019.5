@@ -13,9 +13,14 @@ namespace Messenger
             var dima = new Messenger("dima");
 
             TelecomStation.Connect(vova, dima);
+            TelecomStation.Connect(dima, vova);
 
             vova.Send("Димон чемпион!");
-            vova.Send("basters!");
+            vova.Send("Димон чемпион!");
+            vova.Send("Димон чемпион!");
+            dima.Send("Basters!");
+            vova.Send("Димон чемпион!");
+            dima.Send("basters!");
 
             Console.ReadKey();
         }

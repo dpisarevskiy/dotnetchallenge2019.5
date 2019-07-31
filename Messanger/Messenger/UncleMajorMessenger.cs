@@ -49,7 +49,7 @@ namespace Messenger
         public static bool IsValidMessage(string input)
         {
             return (stopKeywords.Any(input.ToLowerInvariant().Contains));
-            // stopKeywords.Any(s=>input.Contains(s));
+            // stopKeywords.Any(s => input.Contains(s));//
         }
     }
 }
