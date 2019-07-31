@@ -16,26 +16,65 @@ namespace FractalTree
 
         public MainWindow()
         {
-            Loaded += (sender, args) => DrawFractal(new Point(400, 450), 200, Math.PI / 2);
+            Loaded += (sender, args) => DrawFractal(new Point(400, 450), 200, Math.PI / 2, 10);
             InitializeComponent();
         }
 
-        private void DrawFractal(Point start, double length, double angle)
+        private void DrawFractal(Point start, double length, double angle, int level)
         {
-            var myLine = new Line
-            {
-                Stroke = _brush,
-                X1 = start.X,
-                Y1 = start.Y,
-                X2 = start.X + length * Math.Cos(angle),
-                Y2 = start.Y - length * Math.Sin(angle),
-                StrokeThickness = 1
-            };
+           // Sleep();
 
-            canvas.Children.Add(myLine);
+            canvas.Children.Add(new Line
+                {
+                    Stroke = _brush,
+                    X1 = start.X,
+                    Y1 = start.Y,
+                    X2 = start.X + length * Math.Cos(angle),
+                    Y2 = start.Y - length * Math.Sin(angle),
+                    StrokeThickness = 1
+                });
+
+            //canvas.Children.Add(new Line
+            //{
+            //    Stroke = _brush,
+            //    X1 = start.X,
+            //    Y1 = start.Y,
+            //    X2 = start.X + length / 2 * Math.Cos(angle * 1.5),
+            //    Y2 = start.Y - length / 2 * Math.Sin(angle * 1.5),
+            //    StrokeThickness = 1
+            //});
+
+            //canvas.Children.Add(new Line
+            //{
+            //    Stroke = _brush,
+            //    X1 = start.X + length * Math.Cos(angle),
+            //    Y1 = start.Y - length * Math.Sin(angle),
+            //    X2 = start.X + length * Math.Cos(angle) + length / 2 * Math.Cos(angle*1.5),
+            //    Y2 = start.Y - length * Math.Sin(angle) - length / 2 * Math.Sin(angle*1.5),
+            //    StrokeThickness = 1
+            //});
+
+            //canvas.Children.Add(new Line
+            //{
+            //    Stroke = _brush,
+            //    X1 = start.X + length * Math.Cos(angle),
+            //    Y1 = start.Y - length * Math.Sin(angle),
+            //    X2 = start.X + length * Math.Cos(angle) + length / 2 * Math.Cos(angle / 2),
+            //    Y2 = start.Y - length * Math.Sin(angle) - length / 2 * Math.Sin(angle / 2),
+            //    StrokeThickness = 1
+            //});
+
+            //  canvas.Children.Add(myLine);
 
             //Задержка в отрисовке для создания анимации
-            Sleep();
+
+            if (--level >= 0)
+            {
+                DrawFractal(new Point(start.X + length * Math.Cos(angle), start.Y - length * Math.Sin(angle)),length/1.5, angle +20, level);
+                DrawFractal(new Point(start.X + length * Math.Cos(angle), start.Y - length * Math.Sin(angle)),length/1.5, angle -20, level);
+            }
+            
+
         }
 
         private void Sleep(int ms = 1)
